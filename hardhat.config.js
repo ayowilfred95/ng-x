@@ -1,5 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
+require("hardhat-contract-sizer");
 const fs = require('fs');
 // const infuraId = fs.readFileSync(".infuraid").toString().trim() || "";
 require('dotenv').config();
@@ -14,6 +15,9 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 
 module.exports = {
   defaultNetwork: "hardhat",
+  paths:{
+    artifacts: './src/artifacts',
+  },
   networks: {
     hardhat: {
       chainId: 1337
