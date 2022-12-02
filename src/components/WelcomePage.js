@@ -1,5 +1,4 @@
 import Navbar from "./Navbar";
-import NFTTile from "./NFTTile";
 import axios from "axios";
 import { useState } from "react";
 import group17 from '../group_17.png';
