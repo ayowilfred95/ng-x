@@ -1,35 +1,36 @@
-function AddPrescription({ contract }) {
+import React from "react";
+function AddDiagnosis({ contract }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { medID, patientID } = e.target.elements;
+    const { patientId, condition } = e.target.elements;
 
-    const tx = await contract.addPrescription(patientID.value, medID.value);
+    const tx = await contract.addCondition(condition.value, patientId.value);
     await tx.wait();
-    alert("Doctor has prescribed new medication!");
+    alert("Doctor has added a new diagnosis!");
   };
   return (
     <form onSubmit={handleSubmit}>
-      <div className="w-full border-4 p-2 mb-4 rounded border-gray-400">
+      <div className="w-30 border-4 p-2 mb-4 rounded border-gray-400">
         <div className="text-gray-600 font-bold text-md mb-2">
-          Prescribe Medication:
+          Add Diagnosis
         </div>
-        <div className="w-50 text-gray-600  text-md mb-2">
+        <div className="text-gray-600  text-md mb-2">
           <label>Enter Patient ID: </label>
 
           <input
-            className="w-10 border 2 border-rose-500 bg-slate-300"
+            className="w-30 border 2 border-rose-500 bg-slate-300"
             type="text"
-            id="patientID"
+            id="patientId"
             required
           />
         </div>
 
         <div className="text-gray-600  text-md mb-2">
-          <label>Enter Medication ID: </label>
+          <label>Enter Diagnosis: </label>
           <input
-            className="w-10 border 2 border-rose-500 bg-slate-300"
+            className="w-30 border 2 border-rose-500 bg-slate-300"
             type="text"
-            id="medID"
+            id="condition"
             required
           />
         </div>
@@ -44,4 +45,4 @@ function AddPrescription({ contract }) {
     </form>
   );
 }
-export default AddPrescription;
+export default AddDiagnosis;

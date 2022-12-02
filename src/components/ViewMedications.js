@@ -26,7 +26,6 @@ function ViewMeds({ contract }) {
               <div key={med.medicationId.toNumber()} className="border">
                 <div> Medication ID Number: {med.medicationId.toNumber()}</div>
                 <div> Medication Name: {med.medicationName} </div>
-                <div> Expiration Date: {med.expirationDate} </div>
                 <div> Dosage: {med.dosage} </div>
                 <div>Price: ${med.price.toNumber()} </div>
               </div>

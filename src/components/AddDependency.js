@@ -1,35 +1,35 @@
 import React from "react";
 
-function NewMedication({ contract }) {
+function AddNewDependency({ contract }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { IDnumber, med_name, date, dosage, price } = e.target.elements;
+    const { IDnumber, dependency_name, dependency_relationship, dependency_address, contact_nos } = e.target.elements;
     let details = {
       number: IDnumber.value,
-      name: med_name.value,
-      date: date.value,
-      dosage: dosage.value,
-      price: price.value,
+      name: dependency_name.value,
+      relationship: dependency_relationship.value,
+      address: dependency_address.value,
+      contact: contact_nos.value,
     };
     const tx = await contract.addMedication(
       details.number,
       details.name,
-      details.date,
-      details.dosage,
-      details.price
+      details.relationship,
+      details.address,
+      details.contact
     );
     await tx.wait();
-    alert("New Medication added");
+    alert("New Dependency added");
   };
   return (
     <form onSubmit={handleSubmit}>
       <div className="w-full border-4 p-2 mb-4 rounded border-gray-400">
         <div className="text-gray-600 font-bold text-lg mb-2">
-          Add New Medication:{" "}
+          Add New Dependency:{" "}
         </div>
 
         <div className="text-gray-600  text-md mb-2">
-          <label>Medication ID Number: </label>
+          <label>Dependency ID Number: </label>
           <input
             className="border 2 border-rose-500 bg-slate-300"
             type="text"
@@ -38,29 +38,38 @@ function NewMedication({ contract }) {
           />
         </div>
         <div className="text-gray-600  text-md mb-2">
-          <label>Medication Name: </label>
+          <label>Dependency Name: </label>
           <input
             className="border 2 border-rose-500 bg-slate-300"
             type="text"
-            id="med_name"
+            id="dependency_name"
             required
           />
         </div>
         <div className="text-gray-600  text-md mb-2">
-          <label>Dosage: </label>
+          <label>Relationship: </label>
           <input
             className="border 2 border-rose-500 bg-slate-300"
             type="text"
-            id="dosage"
+            id="dependency_relationship"
             required
           />
         </div>
         <div className="text-gray-600  text-md mb-2">
-          <label>Price: </label>
+          <label>Address: </label>
           <input
             className="border 2 border-rose-500 bg-slate-300"
             type="text"
-            id="price"
+            id="dependency_address"
+            required
+          />
+        </div>
+        <div className="text-gray-600  text-md mb-2">
+          <label>contact: </label>
+          <input
+            className="border 2 border-rose-500 bg-slate-300"
+            type="text"
+            id="contact_nos"
             required
           />
         </div>
@@ -76,4 +85,4 @@ function NewMedication({ contract }) {
   );
 }
 
-export default NewMedication;
+export default AddNewDependency;

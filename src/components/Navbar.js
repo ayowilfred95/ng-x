@@ -1,6 +1,5 @@
 import fullLogo from '../full_logo.png';
 import { ethers } from "ethers";
-import abi from "../utils/PatientHealthRecord.json";
 import { 
     BrowserRouter as Router, 
     Switch, 
@@ -10,36 +9,15 @@ import {
     useParams 
 } from "react-router-dom";
 import  React, {useEffect, useState} from 'react';
-import { useLocation }  from 'react-router';
-import RegisterNewPatient from "./RegisterNewPatient";
-import RegisterNewDoctor from "./RegisterNewDoctor";
-
-
-const addr = "0x0c0458fd9C2dac9717c2a901d357050A7C596f77";
+import { useLocation } from 'react-router-dom';
+import Login from '../Login';
 
 
 function Navbar() {
-
-const [contract, setContract] = useState(undefined);
 const [connected, toggleConnect] = useState(false);
 const location = useLocation();
 const [currAddress, updateAddress] = useState('0x');
 
-    useEffect(() => {
-      const init = async () => {
-        if (typeof window.ethereum !== "undefined") {
-          //console.log(typeof window.ethereum);
-          await window.ethereum.request({ method: "eth_requestAccounts" });
-          const provider = new ethers.providers.Web3Provider(window.ethereum);
-          const signer = provider.getSigner();
-          const contract_ = new ethers.Contract(addr, contract.abi, signer);
-          setContract(contract_);
-        } else {
-          return <div>Please install metamask!</div>;
-        }
-      };
-      init();
-    }, []);
     async function getAddress() {
         const ethers = require("ethers");
         const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -58,12 +36,12 @@ const [currAddress, updateAddress] = useState('0x');
     async function connectWebsite() {
   
         const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-        if(chainId !== '0x5')
+        if(chainId !== '0x13881')
         {
           //alert('Incorrect network! Switch your metamask network to Rinkeby');
           await window.ethereum.request({
             method: 'wallet_switchEthereumChain',
-            params: [{ chainId: '0x5' }],
+            params: [{ chainId: '0x13881'}],
          })
         }  
         await window.ethereum.request({ method: 'eth_requestAccounts' })
@@ -93,9 +71,9 @@ const [currAddress, updateAddress] = useState('0x');
 
 
     return (
-      <div className="">
-        <nav className="w-screen">
-          <ul className='flex items-end justify-between py-3 bg-transparent text-[#008753] pr-5'>
+      <div className="container mx-auto ">
+        <nav className="p-2 w-screen">
+          <ul className='flex items-end justify-between py-4 bg-transparent text-[#008753] pr-5'>
           <li className='flex items-end ml-5 pb-2'>
             <Link to="/">
             <img src={fullLogo} alt="" width={120} height={120} className="inline-block -mt-2"/>
@@ -108,40 +86,22 @@ const [currAddress, updateAddress] = useState('0x');
             <ul className='lg:flex justify-between font-bold mr-10 text-lg'>
               {location.pathname === "/" ? 
               <li className='border-b-2 hover:pb-0 p-2'>
-                <Link to="/RegisterNewPatient" >RegisterNewPatient </Link> &nbsp;
+                <Link to="/" >WelcomePage </Link> &nbsp;
               </li>
               :
               <li className='hover:border-b-2 hover:pb-0 p-2'>
-                <Link to="/RegisterNewPatient" >Register New Patient </Link>
+                <Link to="/" >WelcomePage</Link>
               </li>              
               }
-              {location.pathname === "/sellNFT" ? 
-              <li className='border-b-2 hover:pb-0 p-2'>
-                <Link to="/RegisterNewdoctor" >Register New Doctor</Link>
-              </li>
-              :
-              <li className='hover:border-b-2 hover:pb-0 p-2'>
-                <Link to="/RegisterNewdoctor"  >Register New Doctor</Link>
-              </li>              
-              }    
-              {location.pathname === "/sellNFT" ? 
-              <li className='border-b-2 hover:pb-0 p-2'>
-                <Link to="/ViewMyRecords" >ViewMyRecords</Link>
-              </li>
-              :
-              <li className='hover:border-b-2 hover:pb-0 p-2'>
-                <Link to="/ViewMyRecords"  >ViewMyRecords</Link>
-              </li>              
-              }             
-              {location.pathname === "/profile" ? 
-              <li className='border-b-2 hover:pb-0 p-2'>
-                <Link to="/profile">Profile</Link>
-              </li>
-              :
-              <li className='hover:border-b-2 hover:pb-0 p-2'>
-                <Link to="/profile">Profile</Link>
-              </li>              
-              }  
+              {location.pathname === "/Login" ? 
+                <li className='block py-2 pr-4 pl-3 text-white  rounded md:bg-transparent  md:p-0 md:dark:text-white dark:bg-blue-600 md:dark:bg-transparent text-white'>
+                  <Link to="/Login">Login</Link>
+                </li>
+                :
+                <li className='block py-2 pr-4 pl-3 text-white  rounded md:bg-transparent  md:p-0 md:dark:text-white dark:bg-blue-600 md:dark:bg-transparent text-white'>
+                  <Link to="/Login">Login</Link>
+                </li>              
+                }   
              <li>
              <button className="enableEthereumButton rounded-full bg-[#008753] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm" onClick={connectWebsite}>{connected? "Connected":"Connect Wallet"}</button> 
               </li>
