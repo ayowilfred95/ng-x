@@ -18,7 +18,7 @@ import ViewDeps from "./components/ViewDependencies";
 import { BsArrowLeftShort } from "react-icons/bs";
 
 
-const addr = "0xE554D980C7aF1702FF93112686976a2c425A56F1";
+const addr = "0xB9AA926FF44fbf4E828781d22d21fceC2e0298d9";
 
 function Login() {
   const [contract, setContract] = useState(undefined);
