@@ -1,6 +1,4 @@
 import Navbar from "./Navbar";
-import axios from "axios";
-import { useState } from "react";
 import group17 from '../group_17.png';
 import we9 from '../we_9.png';
 import we10 from '../we_10.png';

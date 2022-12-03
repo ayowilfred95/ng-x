@@ -15,12 +15,15 @@ import ViewPatientData from "./components/ViewPatientData";
 import ViewMeds from "./components/ViewMedications";
 import AddNewDependency from "./components/AddDependency";
 import ViewDeps from "./components/ViewDependencies";
+import { BsArrowLeftShort } from "react-icons/bs";
 
 
 const addr = "0xE554D980C7aF1702FF93112686976a2c425A56F1";
 
 function Login() {
   const [contract, setContract] = useState(undefined);
+  const [open, setOpen ] = useState(true);
+
   
 
   useEffect(() => {
@@ -40,13 +43,14 @@ function Login() {
   }, []);
 
   return (
-    <div>
-      <div className="shadow-md rounded px-8 pt-2 pb-4 mb-4 mt-4">
-        <div className="text-gray-600 font-bold text-lg mb-2">
-          Patient Record Ethereum Dapp
+    <div className="flex">
+      <div className={`bg-[#008753] h-screen p-5 pt-8 ${open ? "w-72"  : "w-20"} duration-300 relative`}>
+        <BsArrowLeftShort className={`bg-[#008753 ] text-dark-purple text-3xl rounded-full absolute -right-3 top-9 
+        border border-dark-purple cursor-pointer ${!open && "rotate-180"} `} onClick={()=> setOpen (!open)} />
+          </div>
+        <div className="p-7">
+          <h1 className="text-2xl font-semibold text-[#F2F2F2] bg-[#008753]"> Patient Dashboard </h1>
         </div>
-        Welcome to the Patient Portal
-      </div>
       <div className="rowC">
         <RegisterNewPatient contract={contract} />
         &nbsp;
