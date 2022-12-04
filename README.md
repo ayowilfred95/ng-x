@@ -1,7 +1,7 @@
 # NG-X
 A Data Exchange Platform for Nigeria
 
-![Hackathon-Video](/../ng-x/img/Welcome%20page.png)(https://youtu.be/54nCDdm4Ngo "Hackathon Video")
+![Hackathon-Video](/img/Welcome%20page.png)
 
 _Click on the video to view it on YouTube_
 
