@@ -56,7 +56,7 @@ For this project we used the following technology for building
 - React.js
 
 It was deployed on:
-- Polygon Mumbai
+- [Polygon](https://polygon.technology/) - Enables us to deploy contracts in L2 blockchain.
 
 # Team
 - [Ayomide Wilfred](https://github.com/ayowilfred95)
@@ -64,3 +64,16 @@ It was deployed on:
 - [Imran Abdulmalik](https://github.com/isoteriksoftware)
 - [Valentina Oguka]()
 - [Werleed Attah]()
+
+
+## ☄️ What's next?
+
+We intend to deploy this project and get individuals, businesses and the government to adopt this solution into the operations of the country.
+
+NG-X aims at becoming the primary data storage and exchange platform in Nigeria and we intend to scale into finance, eID, voting systems and other sectors.
+
+## 🔩 Project Structure
+
+- [UI Design](/img/)
+- [Web Frontend](/src/)
+- [Contracts](/contracts/)
