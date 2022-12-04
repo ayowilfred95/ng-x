@@ -38,8 +38,8 @@ The NG-X healthcare system enables citizens to manage their prescriptions, submi
 
 
 ### 🕵️ How it works?
-![NG-X Medical Portal Demo](https://youtu.be/54nCDdm4Ngo)
-_Click on the video to view it on YouTube_
+![NG-X Medical Portal Demo](/img/Dashboard%20-%20Patient.png)(https://youtu.be/54nCDdm4Ngo)
+_Click on the link to view it on YouTube_
 
 From the citizens end, citizens are onboarded with their NIN which would be linked to the generated unique ID to access NG-X. They further provide other basic information about themselves or dependencies they are managing.
 
@@ -50,7 +50,6 @@ On the provider end, when patient visits the pharmacy, hospitals or family docto
 # Used Technology
 
 For this project we used the following technology for building
-
 
 - Figma
 - Tailwind CSS
