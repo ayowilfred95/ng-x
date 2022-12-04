@@ -1,9 +1,9 @@
 # NG-X
 A Data Exchange Platform for Nigeria
 
-[![Hackathon-Video]](../ng-x/img/Welcome%20page.png)(https://youtu.be/54nCDdm4Ngo "Hackathon Video")
+![NG-X Landing page](/img/Welcome%20page.png)
 
-_Click on the video to view it on YouTube_
+
 
 Healthcare has been facing a lot of challenges in Nigeria especially loss of data on a patient which can lead poor information on a patients illness and previous treatment which can lead to death. You can now manage your healthcare record in one place and you can access anywhere, anytime. Join now [NG-X](https://ng-x-ayowilfred95.vercel.app/)
 
@@ -38,22 +38,42 @@ The NG-X healthcare system enables citizens to manage their prescriptions, submi
 
 
 ### 🕵️ How it works?
+![NG-X Medical Portal Demo](/img/Dashboard%20-%20Patient.png)(https://youtu.be/54nCDdm4Ngo)
+_Click on the link to view it on YouTube_
+
 From the citizens end, citizens are onboarded with their NIN which would be linked to the generated unique ID to access NG-X. They further provide other basic information about themselves or dependencies they are managing.
 
 On the provider end, when patient visits the pharmacy, hospitals or family doctor, these healthcare providers can easily lookup the patients information using the healthcare providers portal and providing the patients or citizen's Unique ID. Once provided only information required by the healthcare provider would be displayed based on their role. For example the pharmacy can only access the citizens prescriptions information. Healthcare providers are manually onboarded after proper background check to ensure the safety of the users.
 
 
 
-# Sample Hardhat Project
+# Used Technology
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+For this project we used the following technology for building
 
-Try running some of the following tasks:
+- Figma
+- Tailwind CSS
+- React.js
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+It was deployed on:
+- [Polygon](https://polygon.technology/) - Enables us to deploy contracts in L2 blockchain.
+
+# Team
+- [Ayomide Wilfred](https://github.com/ayowilfred95)
+- [Ottobong Christopher](https://github.com/ottobong)
+- [Imran Abdulmalik](https://github.com/isoteriksoftware)
+- [Valentina Oguka]()
+- [Werleed Attah]()
+
+
+## ☄️ What's next?
+
+We intend to deploy this project and get individuals, businesses and the government to adopt this solution into the operations of the country.
+
+NG-X aims at becoming the primary data storage and exchange platform in Nigeria and we intend to scale into finance, eID, voting systems and other sectors.
+
+## 🔩 Project Structure
+
+- [UI Design](/img/)
+- [Web Frontend](/src/)
+- [Contracts](/contracts/)
