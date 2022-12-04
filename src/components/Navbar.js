@@ -1,5 +1,4 @@
 import fullLogo from '../full_logo.png';
-import { ethers } from "ethers";
 import { 
     BrowserRouter as Router, 
     Switch, 
@@ -8,50 +7,20 @@ import {
     useRouteMatch,
     useParams 
 } from "react-router-dom";
-import  React, {useEffect, useState} from 'react';
-import { useLocation } from 'react-router-dom';
-import Login from '../Login';
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 
 function Navbar() {
-const [connected, toggleConnect] = useState(false);
-const location = useLocation();
-const [currAddress, updateAddress] = useState('0x');
+  const navigate = useNavigate();
 
-    async function getAddress() {
-        const ethers = require("ethers");
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        const addr = await signer.getAddress();
-        updateAddress(addr);
-      }
-    function updateButton() {
-        const ethereumButton = document.querySelector('.enableEthereumButton');
-        ethereumButton.textContent = "Connected";
-        ethereumButton.classList.remove("hover:bg-blue-70");
-        ethereumButton.classList.remove("bg-blue-500");
-        ethereumButton.classList.add("hover:bg-blue-70");
-        ethereumButton.classList.add("bg-blue-500");
-      }
-    async function connectWebsite() {
-  
-        const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-        if(chainId !== '0x13881')
-        {
-          //alert('Incorrect network! Switch your metamask network to Rinkeby');
-          await window.ethereum.request({
-            method: 'wallet_switchEthereumChain',
-            params: [{ chainId: '0x13881'}],
-         })
-        }  
-        await window.ethereum.request({ method: 'eth_requestAccounts' })
-          .then(() => {
-            updateButton();
-            console.log("here");
-            getAddress();
-            window.location.replace(location.pathname)
-          });
-    };
+  const handleClick = async () => {
+
+    navigate("/Signup");
+  }
+
     
       
     return (
@@ -68,26 +37,14 @@ const [currAddress, updateAddress] = useState('0x');
           </li>
           <li className='w-2/6 px-[100px]'>
             <ul className='lg:flex justify-between font-bold mr-10 text-lg'>
-              
-              {location.pathname === "/Login" ? 
-                <li className='block py-2  pr-4 pl-3 bg-transparent text-[#008753]    '>
-                  <Link to="/Login">Login</Link>
-                </li>
-                :
-                <li className='block py-2 pr-4 pl-3 bg-transparent text-[#008753]  '>
-                  <Link to="/Login">Login</Link>
-                </li>              
-                }   
+                
              <li>
-             <button className="enableEthereumButton rounded-full  hover:bg-[#008753] text-white font-bold py-2 px-2 rounded text-sm" onClick={connectWebsite}>{connected? "Connected":"Connect Wallet"}</button> 
+             <button className="enableEthereumButton rounded-full  hover:bg-[#008753] text-[#008753] font-bold py-2 px-2 rounded text-sm" onClick={handleClick}>Login</button> 
               </li>
             </ul>
           </li>
           </ul>
         </nav>
-        <div className='text-white text-bold text-right mr-10 text-sm'>
-          {currAddress !== "0x" ? "Connected to":"Not Connected. Please login to register"} {currAddress !== "0x" ? (currAddress.substring(0,15)+'...'):""}
-        </div>
       </div>
     );
   }

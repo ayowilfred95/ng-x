@@ -21,6 +21,7 @@ import ViewMeds from "./components/ViewMedications";
 import AddNewDependency from "./components/AddDependency";
 import ViewDeps from "./components/ViewDependencies";
 import React, { useState, useEffect } from "react";
+import Signup from "./components/Signup";
 
 
 const addr = "0x02dAC730E5F328D9F455D5F8616deC2206F682aa";
@@ -67,10 +68,11 @@ function App() {
       <Route path="/ViewMeds" element={<ViewMeds contract={contract} />}/>
       <Route path="/AddNewDependency" element={<AddNewDependency contract={contract} />}/>
       <Route path="/ViewDeps" element={<ViewDeps contract={contract} />}/>
-
-      
-     
+      <Route path="/Signup" element={<Signup />} />
+       
     </Routes>
+
+   
   </div>
   );
 }
