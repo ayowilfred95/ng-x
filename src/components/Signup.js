@@ -1,31 +1,25 @@
 import  react from "react";
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
+
 
 
 
 function Signup() {
     const navigate = useNavigate();
     const [connected, toggleConnect] = useState(false);
+    const [currAddress, updateAddress] = useState('0x')
+    const location = useLocation();
 
-
-const isWalletConnected = async () => {
-    try {
-      const { ethereum } = window;
-
-      const accounts = await ethereum.request({method: 'eth_accounts'})
-      console.log("accounts: ", accounts);
-
-      if (accounts.length > 0) {
-        const account = accounts[0];
-        console.log("wallet is connected! " + account);
-      } else {
-        console.log("make sure MetaMask is connected");
-      }
-    } catch (error) {
-      console.log("error: ", error);
+    async function getAddress() {
+      const ethers = require("ethers");
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const addr = await signer.getAddress();
+      updateAddress(addr);
     }
-  }
+
    
     async function connectWebsite() {
   
@@ -41,10 +35,28 @@ const isWalletConnected = async () => {
         await window.ethereum.request({ method: 'eth_requestAccounts' })
           .then(() => {
             console.log("here");
-            isWalletConnected();
-            navigate("/Login");
+            getAddress();
+            window.location.replace(location.pathname)
+          
           });
-    };
+        
+    }
+    const handleSubmit = async() => {
+      navigate("/Login");
+    }
+    useEffect(() => {
+      let val = window.ethereum.isConnected();
+      if(val)
+      {
+        console.log("here");
+        getAddress();
+        toggleConnect(val);
+      }
+  
+      window.ethereum.on('accountsChanged', function(accounts){
+        window.location.replace(location.pathname)
+      })
+    });
 
 
 
@@ -55,8 +67,16 @@ const isWalletConnected = async () => {
               <div className="  flex item-stretch  grid grid-cols-1 py-[250px]  place-items-center " >
             <h1 className=" text-[#008753] font-['Inter']  leading-[40px] font-[900] text-[32px] " >Connect Wallet</h1>
             <h1  className=" text-[#7B7B7B] py-[20px] font-[600] text-[18px] leading-[23px]  " >connect your wallet to get started</h1>
-             <button className=" w-[178px]   rounded-full-[12px] h-[56px]  text-center text-[#ffffff] bg-[#008753] rounded-[8px]  text-[18px] leading-[23px] " onClick={connectWebsite}>Connect wallet</button>
+             <button className=" w-[178px]   rounded-full-[12px] h-[56px]  text-center text-[#ffffff] bg-[#008753] rounded-[8px]  text-[18px] leading-[23px] " onClick={connectWebsite}>{connected? "Connected":"Connect Wallet"}</button>
+             <div className=" py-[30px] " >
+             <button className=" w-[178px]   rounded-full-[12px] h-[56px]  text-center text-[#ffffff] bg-[#008753] rounded-[8px]  text-[18px] leading-[23px] " onClick={handleSubmit}>Dashboard</button>
+             </div>
+             
         </div>
+        < hr/>
+          <div className='text-white text-bold text-right mr-10 text-sm'>
+            {currAddress !== "0x" ? "Connected to":"Not Connected. Please login to get started"} {currAddress !== "0x" ? (currAddress.substring(0,15)+'...'):""}
+          </div>
         </div>
       
         
