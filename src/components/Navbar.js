@@ -82,28 +82,20 @@ const [currAddress, updateAddress] = useState('0x');
             </div>
             </Link>
           </li>
-          <li className='w-2/6'>
+          <li className='w-2/6 px-[100px]'>
             <ul className='lg:flex justify-between font-bold mr-10 text-lg'>
-              {location.pathname === "/" ? 
-              <li className='border-b-2 hover:pb-0 p-2'>
-                <Link to="/" >WelcomePage </Link> &nbsp;
-              </li>
-              :
-              <li className='hover:border-b-2 hover:pb-0 p-2'>
-                <Link to="/" >WelcomePage</Link>
-              </li>              
-              }
+              
               {location.pathname === "/Login" ? 
-                <li className='block py-2 pr-4 pl-3 text-white  rounded md:bg-transparent  md:p-0 md:dark:text-white dark:bg-blue-600 md:dark:bg-transparent text-white'>
+                <li className='block py-2  pr-4 pl-3 bg-transparent text-[#008753]    '>
                   <Link to="/Login">Login</Link>
                 </li>
                 :
-                <li className='block py-2 pr-4 pl-3 text-white  rounded md:bg-transparent  md:p-0 md:dark:text-white dark:bg-blue-600 md:dark:bg-transparent text-white'>
+                <li className='block py-2 pr-4 pl-3 bg-transparent text-[#008753]  '>
                   <Link to="/Login">Login</Link>
                 </li>              
                 }   
              <li>
-             <button className="enableEthereumButton rounded-full bg-[#008753] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm" onClick={connectWebsite}>{connected? "Connected":"Connect Wallet"}</button> 
+             <button className="enableEthereumButton rounded-full  hover:bg-[#008753] text-white font-bold py-2 px-2 rounded text-sm" onClick={connectWebsite}>{connected? "Connected":"Connect Wallet"}</button> 
               </li>
             </ul>
           </li>

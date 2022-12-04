@@ -1,29 +1,46 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 function RegisterNewPatient({ contract }) {
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const navigate = useNavigate();
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+   try{
+     
     const { name, gender, age } = e.target.elements;
-    let details = {
-      name: name.value,
-      gender: gender.value,
-      age: age.value,
-    };
-    const tx = await contract.registerNewPatient(
-      details.name,
-      details.gender,
-      details.age
-    );
-    await tx.wait();
-    console.log(
-      typeof details.name,
-      typeof parseInt(details.gender),
-      typeof parseInt(details.age)
-    );
-    alert("New Patient Registered!");
+      let details = {
+        name: name.value,
+        gender: gender.value,
+        age: age.value,
+      };
+      const tx = await contract.registerNewPatient(
+        details.name,
+        details.gender,
+        details.age
+      );
+      await tx.wait();
+      console.log(
+        typeof details.name,
+        typeof parseInt(details.gender),
+        typeof parseInt(details.age)
+      );
+      alert("New Patient Registered!");
+      navigate("/Login");
+     
+
+    }catch(error){
+      console.log(error);
+      alert("Patient already registered!");
+      navigate("/Login");
+
+    }
   };
+    
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
       <div className="w-full border-4 p-2 mb-4 rounded border-gray-400">
         <div className="text-gray-600 font-bold text-md mb-2">
           Register New Patient:

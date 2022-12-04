@@ -1,9 +1,13 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 function AddNewDependency({ contract }) {
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { IDnumber, dependency_name, dependency_relationship, dependency_address, contact_nos } = e.target.elements;
+    try {
+      const { IDnumber, dependency_name, dependency_relationship, dependency_address, contact_nos } = e.target.elements;
     let details = {
       number: IDnumber.value,
       name: dependency_name.value,
@@ -20,6 +24,13 @@ function AddNewDependency({ contract }) {
     );
     await tx.wait();
     alert("New Dependency added");
+    navigate("/Login");
+    } catch (error) {
+      console.log(error);
+      alert("Dependency already added");
+      navigate("/Login");
+    }
+    
   };
   return (
     <form onSubmit={handleSubmit}>

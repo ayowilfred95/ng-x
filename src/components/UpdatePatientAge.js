@@ -1,9 +1,22 @@
+import React from "react";
+import { useNavigate } from 'react-router-dom';
+
 function UpdatePatientAge({ contract }) {
+  const navigate = useNavigate();
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { age } = e.target.elements;
-    await contract.updateMyAge(age.value);
-    alert("Patient Age successfully updated!");
+    try{
+      const { age } = e.target.elements;
+      await contract.updateMyAge(age.value);
+      alert("Patient Age successfully updated!");
+      navigate("/Login");
+    }catch(error){
+      console.log(error);
+      alert("Patient is not register! Please register as a new patient to enable age update");
+    }
+   
   };
   return (
     <div>

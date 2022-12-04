@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PatientResults from "./PatientResults";
+import { useNavigate } from 'react-router-dom';
 
 
 function ViewMyRecords({ contract }) {
@@ -11,23 +12,32 @@ function ViewMyRecords({ contract }) {
   const [id, setId] = useState(undefined);
   const [prescriptions, setPrescriptions] = useState([]);
   const [conditions, setConditions] = useState([]);
+  const navigate = useNavigate();
 
   const handleClick = async () => {
-    const data = await contract.viewMyRecords();
+    try{
+      const data = await contract.viewMyRecords();
     const num = data.patientID;
     setPrescriptions(data.prescriptions);
     setConditions(data.conditions);
     setId(num.toNumber());
     setObj(data);
     setToggle(!toggle);
-   
-  };
+    }catch(error){
+      console.log(error);
+      alert("Not a patient yet! please register to view your records");
+    }
+    
+   };
+  const handleSubmit = async () => {
+    navigate("/Login");
+  }
 
   return (
     <div>
       <div>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-1 rounded-full"
+          className="bg-[#008753] hover:bg-[#FFCBCB] text-white font-bold py-1 px-1 rounded-full"
           onClick={() => {
             handleClick();
           }}
@@ -44,6 +54,9 @@ function ViewMyRecords({ contract }) {
           conditions={conditions}
         />
       ) : null}
+      <div>
+        <button onClick={handleSubmit} className=" bg-[#008753] hover:bg-[#FFCBCB] " >Return home</button>
+      </div>
     </div>
   );
 }

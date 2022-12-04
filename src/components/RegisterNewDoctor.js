@@ -1,9 +1,15 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 function RegisterNewDoctor({ contract }) {
+  const navigate = useNavigate();
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, specialty, location } = e.target.elements;
+    try{
+
+      const { name, specialty, location } = e.target.elements;
     const tx = await contract.registerNewDoctor(
       name.value,
       specialty.value,
@@ -12,6 +18,15 @@ function RegisterNewDoctor({ contract }) {
     await tx.wait();
 
     alert("New Doctor Registered!");
+    navigate("/Login");
+
+    }catch(error){
+      console.log(error);
+      alert("Doctor already Registered!");
+      navigate("/Login");
+
+    }
+    
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -51,6 +66,7 @@ function RegisterNewDoctor({ contract }) {
         <button
           className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded-full"
           type="submit"
+          
         >
           Submit
         </button>

@@ -1,11 +1,25 @@
+import React from "react";
+import { useNavigate } from 'react-router-dom';
+
 function AddPrescription({ contract }) {
+  const navigate = useNavigate();
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { medID, patientID } = e.target.elements;
+    try{
+      const { medID, patientID } = e.target.elements;
 
-    const tx = await contract.addPrescription(patientID.value, medID.value);
-    await tx.wait();
-    alert("Doctor has prescribed new medication!");
+      const tx = await contract.addPrescription(patientID.value, medID.value);
+      await tx.wait();
+      alert("Doctor has prescribed new medication!");
+      navigate("/Login");
+    }catch(error){
+      console.log(error);
+      alert("Medication is not registered!")
+      navigate("/Login");
+    }
+  
   };
   return (
     <form onSubmit={handleSubmit}>

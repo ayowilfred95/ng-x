@@ -1,11 +1,30 @@
+import React from "react";
+import { useNavigate } from 'react-router-dom';
+
 function ApproveDoctor({ contract }) {
+
+  const navigate = useNavigate();
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { id } = e.target.elements;
+
+    try{
+      const { id } = e.target.elements;
 
     await contract.approveDoctor(id.value);
-    alert("Doctor Approved!");
+    alert("Doctor Approved Successfully!");
+    navigate("/Login");
+    }catch(error){
+      console.log(error);
+      alert("Doctor does not exist");
+      navigate("/Login");
+    }
+    
   };
+
+  const handleClick = async()=>{
+    navigate("/Login");
+  }
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -28,6 +47,9 @@ function ApproveDoctor({ contract }) {
           </button>
         </div>
       </form>
+      <div>
+        <button className=" py-[30px] bg-[#008753] hover:bg-[#FFCBCB]" onClick={handleClick}>Return</button>
+      </div>
     </div>
   );
 }

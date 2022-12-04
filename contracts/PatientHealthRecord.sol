@@ -46,6 +46,7 @@ contract PatientHealthRecord {
     struct Medication {
         uint256 medicationId;
         string medicationName;
+        string expirationDate;
         string dosage;
         uint256 price;
     }
@@ -213,6 +214,7 @@ contract PatientHealthRecord {
     function addMedication(
         uint256 _medicationID,
         string calldata _medicationName,
+        string calldata _expirationDate,
         string calldata _dosage,
         uint256 _price
     ) external onlyDoctor validNumber(_medicationID) validNumber(_price) {
@@ -224,6 +226,7 @@ contract PatientHealthRecord {
         Medication memory medicine = Medication(
             _medicationID,
             _medicationName,
+            _expirationDate,
             _dosage,
             _price
         );

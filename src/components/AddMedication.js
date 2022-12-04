@@ -1,25 +1,37 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
-function NewMedication({ contract }) {
+function AddMedication({ contract }) {
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { IDnumber, med_name, date, dosage, price } = e.target.elements;
-    let details = {
-      number: IDnumber.value,
-      name: med_name.value,
-      date: date.value,
-      dosage: dosage.value,
-      price: price.value,
-    };
-    const tx = await contract.addMedication(
-      details.number,
-      details.name,
-      details.date,
-      details.dosage,
-      details.price
-    );
-    await tx.wait();
-    alert("New Medication added");
+
+    try {
+      const { IDnumber, med_name, expiration_date, dosage, price } = e.target.elements;
+      let details = {
+        number: IDnumber.value,
+        name: med_name.value,
+        date: expiration_date.value,
+        dosage: dosage.value,
+        price: price.value,
+      };
+      const tx = await contract.addMedication(
+        details.number,
+        details.name,
+        details.date,
+        details.dosage,
+        details.price
+      );
+      await tx.wait();
+      alert("New Medication added");
+      navigate("/Login");
+    } catch (error) {
+      console.log(error);
+      alert('medication already added');
+      
+    }
+   
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -56,6 +68,16 @@ function NewMedication({ contract }) {
           />
         </div>
         <div className="text-gray-600  text-md mb-2">
+          <label>Expiration Date: </label>
+          <input
+            className="border 2 border-rose-500 bg-slate-300"
+            type="text"
+            id="expiration_date"
+            required
+            placeholder ="february"
+          />
+          </div>
+        <div className="text-gray-600  text-md mb-2">
           <label>Price: </label>
           <input
             className="border 2 border-rose-500 bg-slate-300"
@@ -76,4 +98,4 @@ function NewMedication({ contract }) {
   );
 }
 
-export default NewMedication;
+export default AddMedication;

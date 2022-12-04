@@ -1,6 +1,8 @@
 import React from "react";
 
 function DoctorDetails({ doc, ID_ }) {
+  
+  
   return (
     <div>
       <div>Doctor ID: {ID_}</div>

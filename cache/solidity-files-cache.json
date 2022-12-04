@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/wilfred/Desktop/polygon-bootcamp/NG-X/ng-x/contracts/PatientHealthRecord.sol": {
-      "lastModificationDate": 1670064604409,
-      "contentHash": "3fc96a9442c6ffeb638eabc1d380e816",
+      "lastModificationDate": 1670132198842,
+      "contentHash": "a1ee987b5bd4a74edcd2fc126d3c0e9b",
       "sourceName": "contracts/PatientHealthRecord.sol",
       "solcConfig": {
         "version": "0.8.17",

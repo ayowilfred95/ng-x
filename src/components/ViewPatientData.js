@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import PatientResultsForDoctor from "./PatientResultsForDoctor";
 
@@ -8,19 +9,31 @@ function ViewPatientData({ contract }) {
   const [id, setId] = useState(undefined);
   const [prescriptions, setPrescriptions] = useState([]);
   const [conditions, setConditions] = useState([]);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { patientID } = e.target.elements;
+    try{
+      const { patientID } = e.target.elements;
 
-    const data = await contract.viewPatientRecords(patientID.value);
-    const num = data.patientID;
-    setPrescriptions(data.prescriptions);
-    setConditions(data.conditions);
-    setId(num.toNumber());
-    setObj(data);
-    setToggle(!toggle);
+      const data = await contract.viewPatientRecords(patientID.value);
+      const num = data.patientID;
+      setPrescriptions(data.prescriptions);
+      setConditions(data.conditions);
+      setId(num.toNumber());
+      setObj(data);
+      setToggle(!toggle);
+    }catch(error){
+      console.log(error);
+      alert("Doctor does not have approval to treat this patient");
+
+    }
+   
   };
+
+  const handleClick = async ()=>{
+    navigate("/Login");
+  }
 
   return (
     <div>
@@ -49,6 +62,11 @@ function ViewPatientData({ contract }) {
           conditions={conditions}
         />
       ) : null}
+      <div>
+        <buttton onClick={handleClick} className=" bg-[#008753] hover:bg-[#FFCBCB] ">
+          Return Home
+        </buttton>
+      </div>
     </div>
   );
 }
