@@ -3,8 +3,7 @@ A Data Exchange Platform for Nigeria
 
 ![NG-X Landing page](/img/Welcome%20page.png)
 
-![NG-X Medical Portal Demo](https://youtu.be/54nCDdm4Ngo)
-_Click on the video to view it on YouTube_
+
 
 Healthcare has been facing a lot of challenges in Nigeria especially loss of data on a patient which can lead poor information on a patients illness and previous treatment which can lead to death. You can now manage your healthcare record in one place and you can access anywhere, anytime. Join now [NG-X](https://ng-x-ayowilfred95.vercel.app/)
 
@@ -39,6 +38,9 @@ The NG-X healthcare system enables citizens to manage their prescriptions, submi
 
 
 ### 🕵️ How it works?
+![NG-X Medical Portal Demo](https://youtu.be/54nCDdm4Ngo)
+_Click on the video to view it on YouTube_
+
 From the citizens end, citizens are onboarded with their NIN which would be linked to the generated unique ID to access NG-X. They further provide other basic information about themselves or dependencies they are managing.
 
 On the provider end, when patient visits the pharmacy, hospitals or family doctor, these healthcare providers can easily lookup the patients information using the healthcare providers portal and providing the patients or citizen's Unique ID. Once provided only information required by the healthcare provider would be displayed based on their role. For example the pharmacy can only access the citizens prescriptions information. Healthcare providers are manually onboarded after proper background check to ensure the safety of the users.
