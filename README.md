@@ -57,3 +57,10 @@ For this project we used the following technology for building
 
 It was deployed on:
 - Polygon Mumbai
+
+# Team
+- [Ayomide Wilfred](https://github.com/ayowilfred95)
+- [Ottobong Christopher](https://github.com/ottobong)
+- [Imran Abdulmalik](https://github.com/isoteriksoftware)
+- [Valentina Oguka]()
+- [Werleed Attah]()
