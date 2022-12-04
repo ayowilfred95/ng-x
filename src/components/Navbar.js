@@ -51,25 +51,9 @@ const [currAddress, updateAddress] = useState('0x');
             getAddress();
             window.location.replace(location.pathname)
           });
-    }
+    };
     
-      useEffect(() => {
-        let val = window.ethereum.isConnected();
-        if(val)
-        {
-          console.log("here");
-          getAddress();
-          toggleConnect(val);
-          updateButton();
-        }
-    
-        window.ethereum.on('accountsChanged', function(accounts){
-          window.location.replace(location.pathname)
-        })
-      });
-  
-
-
+      
     return (
       <div className="container mx-auto ">
         <nav className="p-2 w-screen">
