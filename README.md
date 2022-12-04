@@ -1,8 +1,9 @@
 # NG-X
 A Data Exchange Platform for Nigeria
 
-![Hackathon-Video](/img/Welcome%20page.png)
+![NG-X Landing page](/img/Welcome%20page.png)
 
+![NG-X Medical Portal Demo](https://youtu.be/54nCDdm4Ngo)
 _Click on the video to view it on YouTube_
 
 Healthcare has been facing a lot of challenges in Nigeria especially loss of data on a patient which can lead poor information on a patients illness and previous treatment which can lead to death. You can now manage your healthcare record in one place and you can access anywhere, anytime. Join now [NG-X](https://ng-x-ayowilfred95.vercel.app/)
