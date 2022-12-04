@@ -1,7 +1,7 @@
 # NG-X
 A Data Exchange Platform for Nigeria
 
-[![Hackathon-Video]](../ng-x/img/Welcome%20page.png)(https://youtu.be/54nCDdm4Ngo "Hackathon Video")
+![Hackathon-Video](/../ng-x/img/Welcome%20page.png)(https://youtu.be/54nCDdm4Ngo "Hackathon Video")
 
 _Click on the video to view it on YouTube_
 
@@ -44,16 +44,14 @@ On the provider end, when patient visits the pharmacy, hospitals or family docto
 
 
 
-# Sample Hardhat Project
+# Used Technology
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+For this project we used the following technology for building
 
-Try running some of the following tasks:
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+- Figma
+- Tailwind CSS
+- React.js
+
+It was deployed on:
+- Polygon Mumbai
